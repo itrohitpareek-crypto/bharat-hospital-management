@@ -1,0 +1,111 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-body);
+}
+
+.dashboard-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.topbar-menu-btn {
+  display: none;
+  background: transparent;
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.topbar-title {
+  font-size: 21px;
+  flex: 1;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-icon-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+.topbar-icon-btn:hover { background: var(--primary-100); }
+.topbar-dot {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  width: 8px;
+  height: 8px;
+  background: var(--danger);
+  border-radius: 50%;
+  border: 2px solid var(--bg-card);
+}
+
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px 6px 6px;
+  border-radius: 999px;
+  background: var(--primary-50);
+  cursor: pointer;
+}
+.topbar-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  overflow: hidden;
+}
+.topbar-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.topbar-user-info p {
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.topbar-user-info span {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+}
+
+.dashboard-content {
+  padding: 28px;
+  flex: 1;
+}
+
+@media (max-width: 980px) {
+  .topbar-menu-btn { display: flex; }
+  .topbar-user-info { display: none; }
+  .dashboard-content { padding: 18px; }
+}
