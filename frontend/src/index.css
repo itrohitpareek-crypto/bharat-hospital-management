@@ -110,6 +110,7 @@ img {
   background: #2a3a5c;
 }
 
+
 /* ============ Utility Classes ============ */
 
 .dark-theme{
@@ -159,6 +160,7 @@ img {
   transition: all 0.25s ease;
   white-space: nowrap;
 }
+
 .btn-primary {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: #fff;

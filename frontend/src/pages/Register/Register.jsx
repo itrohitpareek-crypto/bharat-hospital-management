@@ -58,7 +58,7 @@ const Register = () => {
     <div className="auth-page">
       <div className="auth-visual">
         <div className="auth-visual-content">
-          <span className="brand-icon"><img src="https://bharathospitalsrdr.com/wp-content/uploads/2025/01/2ed8f6f3-0c13-4d62-90c4-027227a9792f-removebg-preview.png"></img></span>
+          <span className="brand-icon"><img src="/images/logo.jpeg"></img></span>
           <h2>Join Bharat Hospital</h2>
           <p>Create your patient account to book appointments, track records and manage your care journey.</p>
         </div>
