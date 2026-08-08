@@ -18,6 +18,12 @@
 
 }
 
+.brand-icon1 img{
+ border-radius: 50%;
+  background: var(--bg-sidebar);
+
+}
+
 .footer-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.7fr 0.7fr 1.1fr 1.1fr;

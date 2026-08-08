@@ -25,7 +25,7 @@ const services = [
   { icon: <FaMicroscope />, title: "Diagnostic Lab", desc: "Advanced pathology, imaging and diagnostic testing with fast reports." },
   { icon: <FaPills />, title: "Pharmacy", desc: "In-house pharmacy with real-time stock and doorstep delivery options." },
   { icon: <FaAmbulance />, title: "Ambulance Service", desc: "GPS-tracked ambulances with trained paramedics on standby." },
-  { icon: <FaHeartbeat />, title: "Chiranjeevi Yojana", desc: "The Chiranjeevi Yojana scheme is also available in our hospital,which helps multiple patients." },
+  { icon: <FaHeartbeat />, title: "Chiranjeevi & RGH Yojana", desc: "The Chiranjeevi Yojana scheme is also available in our hospital,which helps multiple patients." },
 ];
 
 const departments = [
@@ -74,14 +74,14 @@ const departments = [
 
 
 const doctors = [
-  { name: "Dr. Abdul Ghaffar Khan", role: "Medical Director(Physician)", exp: "MBBS, FICM, FCCS(USA) (Fellow In Intensive And Critical Care)\nP.G. DIP. in Clinical Endocrinology & Diabetes (Royal College Of Physicians, London)\nExperience - 18 years", img: "https://bharathospitalsrdr.com/wp-content/uploads/2023/08/WhatsApp-Image-2023-08-21-at-5.05.44-PM-225x300.jpeg" },
-  { name: "Dr. Jay Pittman", role: "General Surgeon", exp: "MBBS, MS, FRCS (London) and having experience\n of serving in abroad\nExperience - 25 years", img: "https://bharathospitalsrdr.com/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-16-at-18.37.04-e1737216569947-250x300.jpeg" },
-  { name: "Dr. Shyam Sundar Nowal", role: "Nephrologist Consultant", exp: "MBBS, MD, DM\nExperience - 10 years\nEvery 3rd Thursday of the Month", img: "https://bharathospitalsrdr.com/wp-content/uploads/2023/08/c3bc00e3-b583-4c13-9450-4a6b895efc2e.jpg" },
-  { name: "Dr. Ritu Gaur", role: "Neurosurgeon", exp: "MBBS, MS, MCh (Neuro Surgery) — GB Pant Hospital, New Delhi\nFormer Assistant Professor (Neuro Surgery) — M Hospital, Bikaner\nExperience - 11 years\nEvery 2nd Monday of the Month", img: "https://bharathospitalsrdr.com/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-27-at-5.04.38-PM-1-1016x1024.jpeg" },
-  { name: "Dr. RIZWANA KHAN", role: "BDS,MIDA", exp: "Lecturer, Vyas Dental College, Jodhpur\nExperience - 18 years", img: "https://bharathospitalsrdr.com/wp-content/uploads/2023/08/IMG20230822121547-600x600.jpg" },
-  { name: "Dr. Ramesh Nandan Joshi", role: "DGO", exp: "MBBS, DGO\nSenior Specialist Surgeon (Gynecology & Obstetrics Department)\nSonologist\nExperience - 13 years", img: "https://bharathospitalsrdr.com/wp-content/uploads/2023/08/WhatsApp-Image-2023-08-03-at-6.56.28-PM-e1691075138691-300x269.jpeg" },
-  { name: "Dr. Darshan Patel", role: "Laproscopic Surgeon", exp: "MBBS,MD(India) and having experience of serving in\n multiple hospitals as laproscopic surgeon\n Experience-9 years", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZqWbFqFeRX2B8q6gsnblAtfOziJ3RkXqpigI-_grwbz_elxuR1KFasIiT&s=10" },
-  { name: "Vijay singh", role: "Medical Assistant", exp: "Certified Medical Assistant\nSupporting Emergency & OPD Services\nExperience - 5 years", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0Cb3kOuozb1pOkPfwuHHB0URgGEc6iw-sInZk0lygPk2QsCj2F-goBLE&s=10" },
+  { name: "Dr. Abdul Ghaffar Khan", role: "Medical Director(Physician)", exp: "MBBS, FICM, FCCS(USA) (Fellow In Intensive And Critical Care)\nP.G. DIP. in Clinical Endocrinology & Diabetes (Royal College Of Physicians, London)\nExperience - 18 years", img: "images/ghafar.jpeg" },
+  { name: "Dr. Jay Pittman", role: "General Surgeon", exp: "MBBS, MS, FRCS (London) and having experience\n of serving in abroad\nExperience - 25 years", img: "/images/pitman.jpeg" },
+  { name: "Dr. Shyam Sundar Nowal", role: "Nephrologist Consultant", exp: "MBBS, MD, DM\nExperience - 10 years\nEvery 3rd Thursday of the Month", img: "/images/shyam.jpeg" },
+  { name: "Dr. Ritu Gaur", role: "Neurosurgeon", exp: "MBBS, MS, MCh (Neuro Surgery) — GB Pant Hospital, New Delhi\nFormer Assistant Professor (Neuro Surgery) — M Hospital, Bikaner\nExperience - 11 years\nEvery 2nd Monday of the Month", img: "images/ritu.jpeg " },
+  { name: "Dr. RIZWANA KHAN", role: "BDS,MIDA", exp: "Lecturer, Vyas Dental College, Jodhpur\nExperience - 18 years", img: "/images/rizwana.jpeg" },
+  { name: "Dr. Ramesh Nandan Joshi", role: "DGO", exp: "MBBS, DGO\nSenior Specialist Surgeon (Gynecology & Obstetrics Department)\nSonologist\nExperience - 13 years", img: "/images/ramesh.jpeg" },
+  { name: "Dr. Darshan Patel", role: "Laproscopic Surgeon", exp: "MBBS,MD(India) and having experience of serving in\n multiple hospitals as laproscopic surgeon\n Experience-9 years", img: "images/darshan.jpeg" },
+  { name: "Vijay singh", role: "Medical Assistant", exp: "Certified Medical Assistant\nSupporting Emergency & OPD Services\nExperience - 5 years", img: "images/vijay.jpeg" },
 ];
 
 const testimonials = [
@@ -139,7 +139,7 @@ const Landing = () => {
             </div>
           </div>
           <div className="hero-media float">
-<img src="https://images.pexels.com/photos/30348333/pexels-photo-30348333.jpeg" alt="Doctor" className="hero-img" />
+<img src="/images/landing.jpeg" alt="Doctor" className="hero-img" />
             <div className="hero-card hero-card-1 glass">
               <FaHeartbeat className="hero-card-icon" />
               <div>
@@ -161,7 +161,7 @@ const Landing = () => {
       <section className="about" id="about">
         <div className="container about-inner">
           <div className="about-media float">
-            <img src="https://bharathospitalsrdr.com/wp-content/uploads/2023/07/hospital.jpg" alt="Bharat Multispeciality Hospital, Sardar Shahar" className="about-img" />
+            <img src="/images/hospital-image.jpeg" className="about-img" />
           </div>
           <div className="about-text">
             <h1>ABOUT US</h1>

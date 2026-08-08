@@ -273,7 +273,7 @@
 }
 .doctor-card { overflow: hidden; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; }
 .doctor-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-.doctor-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+.doctor-card img {width: 100%; aspect-ratio: 1/1; object-fit: cover;}
 .doctor-info { padding: 20px; text-align: center; }
 .doctor-info h4 { font-size: 16px; margin-bottom: 4px; }
 .doctor-info p { color: var(--text-secondary); font-size: 13.5px; margin-bottom: 10px; }

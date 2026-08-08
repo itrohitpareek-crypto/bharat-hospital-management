@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container footer-grid">
         <div className="footer-col">
           <Link to="/" className="navbar-brand" style={{ marginBottom: 16 }}>
-            <span className="brand-icon1"><img src="https://bharathospitalsrdr.com/wp-content/uploads/2025/01/2ed8f6f3-0c13-4d62-90c4-027227a9792f-removebg-preview.png"></img></span>
+            <span className="brand-icon1"><img src="/images/logo.jpeg"></img></span>
             <span>Bharat <b>Hospital</b></span>
           </Link>
           <p className="footer-about">

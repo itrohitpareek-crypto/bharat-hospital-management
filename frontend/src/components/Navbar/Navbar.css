@@ -43,6 +43,10 @@
   font-size: 20px;
   box-shadow: var(--shadow-glow);
 }
+.brand-icon img{
+  background-color: #fff;
+  border-radius: 50%;
+}
 .navbar-links {
   display: flex;
   align-items: center;
