@@ -1,35 +1,22 @@
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../config/cloudinary");
 
-const uploadDir = path.join(__dirname, "..", "uploads", "profiles");
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, uploadDir),
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, `${file.fieldname}-${uniqueSuffix}${path.extname(file.originalname)}`);
+// Images are uploaded straight to Cloudinary instead of the server's local
+// disk. This is essential on hosts like Render, whose free-tier filesystem
+// is ephemeral — anything saved locally is wiped on every restart/redeploy.
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "bharat-hospital",
+    allowed_formats: ["jpg", "jpeg", "png", "webp"],
+    transformation: [{ width: 800, height: 800, crop: "limit" }],
   },
 });
-
-const fileFilter = (req, file, cb) => {
-  const allowedTypes = /jpeg|jpg|png|webp/;
-  const extValid = allowedTypes.test(path.extname(file.originalname).toLowerCase());
-  const mimeValid = allowedTypes.test(file.mimetype);
-  if (extValid && mimeValid) {
-    cb(null, true);
-  } else {
-    cb(new Error("Only image files (jpeg, jpg, png, webp) are allowed"));
-  }
-};
 
 const upload = multer({
   storage,
   limits: { fileSize: 5 * 1024 * 1024 },
-  fileFilter,
 });
 
 module.exports = upload;

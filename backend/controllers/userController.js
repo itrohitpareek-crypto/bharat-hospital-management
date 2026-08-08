@@ -17,7 +17,7 @@ const updateProfile = asyncHandler(async (req, res) => {
   });
 
   if (req.file) {
-    user.profileImage = `/uploads/profiles/${req.file.filename}`;
+    user.profileImage = req.file.path;
   }
 
   await user.save();

@@ -18,11 +18,14 @@ const getSettings = asyncHandler(async (req, res) => {
 const updateSettings = asyncHandler(async (req, res) => {
   let settings = await HospitalSettings.findOne();
   if (!settings) {
-    settings = await HospitalSettings.create(req.body);
+    settings = await HospitalSettings.create({
+      ...req.body,
+      logo: req.file ? req.file.path : "",
+    });
   } else {
     Object.assign(settings, req.body);
     if (req.file) {
-      settings.logo = `/uploads/profiles/${req.file.filename}`;
+      settings.logo = req.file.path;
     }
     await settings.save();
   }
