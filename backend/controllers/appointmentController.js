@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Appointment = require("../models/Appointment");
 const Patient = require("../models/Patient");
 const Doctor = require("../models/Doctor");
+const Notification = require("../models/Notification");
 const sendEmail = require("../utils/sendEmail");
 const { appointmentBookedEmail, appointmentStatusEmail } = require("../utils/emailTemplates");
 
@@ -116,6 +117,16 @@ const createAppointment = asyncHandler(async (req, res) => {
       }),
     });
   }
+
+  if (doctorForEmail?.user?._id) {
+    Notification.create({
+      user: doctorForEmail.user._id,
+      title: "New Appointment Request",
+      message: `${patientDoc?.user?.name || "A patient"} requested an appointment on ${new Date(date).toLocaleDateString()} at ${time}.`,
+      type: "info",
+      link: "/doctor/appointments",
+    }).catch((err) => console.error("Notification create failed:", err.message));
+  }
 });
 
 // @desc    Update appointment status / details
@@ -153,6 +164,17 @@ const updateAppointment = asyncHandler(async (req, res) => {
           status: appointment.status,
         }),
       });
+    }
+
+    if (patientDoc?.user?._id) {
+      const statusLabels = { approved: "confirmed", rejected: "declined", completed: "marked complete", cancelled: "cancelled" };
+      Notification.create({
+        user: patientDoc.user._id,
+        title: "Appointment Update",
+        message: `Your appointment with ${doctorDoc?.user?.name || "the doctor"} on ${new Date(appointment.date).toLocaleDateString()} was ${statusLabels[appointment.status] || appointment.status}.`,
+        type: appointment.status === "approved" || appointment.status === "completed" ? "success" : appointment.status === "rejected" || appointment.status === "cancelled" ? "error" : "info",
+        link: "/patient/appointments",
+      }).catch((err) => console.error("Notification create failed:", err.message));
     }
   }
 });

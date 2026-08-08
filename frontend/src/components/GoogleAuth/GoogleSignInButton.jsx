@@ -41,11 +41,12 @@ const GoogleSignInButton = ({ onSuccess, onError }) => {
           renderButton();
         }
       }, 200);
+
       return () => clearInterval(interval);
     }
   }, [onSuccess, onError]);
 
-  return <div ref={buttonRef} className="google-signin-btn-wrap"></div>;
+  return <div ref={buttonRef}></div>;
 };
 
 export default GoogleSignInButton;

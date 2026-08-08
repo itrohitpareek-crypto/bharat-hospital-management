@@ -51,4 +51,23 @@ const appointmentStatusEmail = ({ patientName, doctorName, date, time, status })
   );
 };
 
-module.exports = { welcomeEmail, appointmentBookedEmail, appointmentStatusEmail };
+const resetPasswordEmail = (name, resetUrl) =>
+  wrap(
+    "Reset Your Password",
+    `<p style="color:#475569; font-size:14.5px; line-height:1.7;">
+      Hi ${name}, we received a request to reset your password. Click the button below to choose a new one.
+      This link will expire in 30 minutes.
+    </p>
+    <div style="text-align:center; margin: 24px 0;">
+      <a href="${resetUrl}" style="background: linear-gradient(135deg, #2563eb, #0ea5e9); color: #fff; padding: 12px 28px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 14px; display: inline-block;">
+        Reset Password
+      </a>
+    </div>
+    <p style="color:#94a3b8; font-size:12.5px; line-height:1.6;">
+      If you didn't request this, you can safely ignore this email — your password will remain unchanged.
+      If the button doesn't work, copy and paste this link into your browser:<br/>
+      <span style="word-break:break-all;">${resetUrl}</span>
+    </p>`
+  );
+
+module.exports = { welcomeEmail, appointmentBookedEmail, appointmentStatusEmail, resetPasswordEmail };

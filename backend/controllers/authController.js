@@ -6,7 +6,7 @@ const Doctor = require("../models/Doctor");
 const Patient = require("../models/Patient");
 const generateToken = require("../utils/generateToken");
 const sendEmail = require("../utils/sendEmail");
-const { welcomeEmail } = require("../utils/emailTemplates");
+const { welcomeEmail, resetPasswordEmail } = require("../utils/emailTemplates");
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
@@ -204,4 +204,80 @@ const googleAuth = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = { registerUser, loginUser, getMe, changePassword, googleAuth };
+// @desc    Request a password reset link via email
+// @route   POST /api/auth/forgot-password
+// @access  Public
+const forgotPassword = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    res.status(400);
+    throw new Error("Please provide your email address");
+  }
+
+  const user = await User.findOne({ email });
+
+  // Always respond the same way whether the user exists or not —
+  // this prevents attackers from using this endpoint to discover
+  // which emails are registered.
+  const genericMessage = "If an account exists with that email, a password reset link has been sent.";
+
+  if (!user) {
+    return res.json({ success: true, message: genericMessage });
+  }
+
+  if (user.authProvider === "google" && !user.password) {
+    // Google-only accounts have no password to reset — nothing to email,
+    // but we still return the generic message to avoid leaking this fact.
+    return res.json({ success: true, message: genericMessage });
+  }
+
+  const rawToken = crypto.randomBytes(32).toString("hex");
+  const hashedToken = crypto.createHash("sha256").update(rawToken).digest("hex");
+
+  user.resetPasswordToken = hashedToken;
+  user.resetPasswordExpire = Date.now() + 30 * 60 * 1000; // 30 minutes
+  await user.save();
+
+  const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+  const resetUrl = `${clientUrl}/reset-password/${rawToken}`;
+
+  await sendEmail({
+    to: user.email,
+    subject: "Reset Your Password — Bharat Hospital",
+    html: resetPasswordEmail(user.name, resetUrl),
+  });
+
+  res.json({ success: true, message: genericMessage });
+});
+
+// @desc    Reset password using the token emailed to the user
+// @route   PUT /api/auth/reset-password/:token
+// @access  Public
+const resetPassword = asyncHandler(async (req, res) => {
+  const { password } = req.body;
+  if (!password || password.length < 6) {
+    res.status(400);
+    throw new Error("Password must be at least 6 characters");
+  }
+
+  const hashedToken = crypto.createHash("sha256").update(req.params.token).digest("hex");
+
+  const user = await User.findOne({
+    resetPasswordToken: hashedToken,
+    resetPasswordExpire: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    res.status(400);
+    throw new Error("This reset link is invalid or has expired. Please request a new one.");
+  }
+
+  user.password = password;
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpire = undefined;
+  await user.save();
+
+  res.json({ success: true, message: "Password reset successfully. You can now log in with your new password." });
+});
+
+module.exports = { registerUser, loginUser, getMe, changePassword, googleAuth, forgotPassword, resetPassword };

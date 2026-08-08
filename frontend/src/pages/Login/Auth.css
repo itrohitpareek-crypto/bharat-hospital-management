@@ -150,6 +150,17 @@
   justify-content: center;
 }
 
+.forgot-password-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--primary);
+}
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
 .auth-switch {
   text-align: center;
   margin-top: 24px;
