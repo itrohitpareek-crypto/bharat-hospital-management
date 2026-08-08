@@ -41,7 +41,7 @@ const Sidebar = ({ open, onClose }) => {
     <>
       <aside className={`sidebar ${open ? "sidebar-open" : ""}`}>
         <div className="sidebar-brand">
-          <span className="brand-icon"><img src="https://bharathospitalsrdr.com/wp-content/uploads/2025/01/2ed8f6f3-0c13-4d62-90c4-027227a9792f-removebg-preview.png"></img></span>
+          <span className="brand-icon"><img src="/images/logo.jpeg"></img></span>
           <span>Bharat <b>Hospital</b></span>
           <button className="sidebar-close" onClick={onClose}><FaTimes /></button>
         </div>
