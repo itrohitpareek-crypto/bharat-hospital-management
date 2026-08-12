@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const HospitalSettings = require("../models/HospitalSettings");
+const uploadToCloudinary = require("../utils/uploadToCloudinary");
 
 // @desc    Get hospital settings
 // @route   GET /api/settings
@@ -16,16 +17,21 @@ const getSettings = asyncHandler(async (req, res) => {
 // @route   PUT /api/settings
 // @access  Private/Admin
 const updateSettings = asyncHandler(async (req, res) => {
+  let logoUrl;
+  if (req.file) {
+    logoUrl = await uploadToCloudinary(req.file.buffer, "bharat-hospital/logo");
+  }
+
   let settings = await HospitalSettings.findOne();
   if (!settings) {
     settings = await HospitalSettings.create({
       ...req.body,
-      logo: req.file ? req.file.path : "",
+      logo: logoUrl || "",
     });
   } else {
     Object.assign(settings, req.body);
-    if (req.file) {
-      settings.logo = req.file.path;
+    if (logoUrl) {
+      settings.logo = logoUrl;
     }
     await settings.save();
   }

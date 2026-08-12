@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
+const uploadToCloudinary = require("../utils/uploadToCloudinary");
 
 // @desc    Update own profile
 // @route   PUT /api/users/profile
@@ -17,7 +18,7 @@ const updateProfile = asyncHandler(async (req, res) => {
   });
 
   if (req.file) {
-    user.profileImage = req.file.path;
+    user.profileImage = await uploadToCloudinary(req.file.buffer, "bharat-hospital/profiles");
   }
 
   await user.save();
