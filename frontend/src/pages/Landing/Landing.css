@@ -1,4 +1,4 @@
-.landing { }
+
 .text-gradient {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
