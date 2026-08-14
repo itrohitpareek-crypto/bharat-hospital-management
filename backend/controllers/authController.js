@@ -238,7 +238,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   user.resetPasswordExpire = Date.now() + 30 * 60 * 1000; // 30 minutes
   await user.save();
 
-  const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+  const clientUrl = process.env.CLIENT_URL || "https://bharat-hospital-management.vercel.app/";
   const resetUrl = `${clientUrl}/reset-password/${rawToken}`;
 
   await sendEmail({
