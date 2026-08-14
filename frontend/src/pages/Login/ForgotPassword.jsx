@@ -27,7 +27,7 @@ const ForgotPassword = () => {
     <div className="auth-page">
       <div className="auth-visual">
         <div className="auth-visual-content">
-          <span className="brand-icon"><FaHeartbeat /></span>
+          <span className="brand-icon"><img src="/images/logo.jpeg" /></span>
           <h2>Bharat Hospital</h2>
           <p>Access your dashboard to manage appointments, records and care — all in one secure place.</p>
         </div>
