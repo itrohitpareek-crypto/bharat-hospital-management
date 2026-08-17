@@ -195,6 +195,14 @@
   flex-shrink: 0;
 }
 
+.about-section-subtitle{
+  color: var(--text-secondary);
+  font-size: 16px;
+  max-width: 620px;
+  text-align: center;
+
+}
+
 
 /*
   Removed the old negative margins.
