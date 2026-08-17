@@ -166,7 +166,6 @@ const Landing = () => {
           </div>
           <div className="about-text">
             <h1>ABOUT US</h1>
-            <p className="about-section-subtitle">Delivering trusted healthcare with compassion, innovation, and a commitment to excellence..</p>
             <h2 className="section-title" style={{ textAlign: "left" }}>About Bharat Multispeciality Hospital</h2>
             <p className="about-desc">
               Bharat Multispeciality Hospital (BMH), Sardar Shahar was established as the first 8-bedded ICU
