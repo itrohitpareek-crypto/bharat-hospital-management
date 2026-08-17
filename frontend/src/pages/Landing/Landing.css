@@ -199,6 +199,7 @@
   color: var(--text-secondary);
   font-size: 16px;
   max-width: 620px;
+  margin: 0 0 48px -200px;
   text-align: center;
 
 }
