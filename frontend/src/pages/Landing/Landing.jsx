@@ -4,7 +4,8 @@ import {
   FaHeartbeat, FaUserMd, FaProcedures, FaAmbulance, FaMicroscope, FaPills,
   FaXRay, FaBaby, FaStethoscope, FaAllergies, FaBrain, FaTint,
   FaCheckCircle, FaStar, FaQuoteLeft, FaChevronDown, FaMapMarkerAlt,
-  FaPhoneAlt, FaEnvelope, FaClock
+  FaPhoneAlt, FaEnvelope, FaClock,
+  FaCircle
 } from "react-icons/fa";
  
 import Navbar from "../../components/Navbar/Navbar";
@@ -165,7 +166,7 @@ const Landing = () => {
           </div>
           <div className="about-text">
             <h1>ABOUT US</h1>
-            <span className="hero-badge"><FaCheckCircle /> Established  on 2nd October 2019 and serving with pride and honour.</span>
+            <p className="section-subtitle">Delivering trusted healthcare with compassion, innovation, and a commitment to excellence..</p>
             <h2 className="section-title" style={{ textAlign: "left" }}>About Bharat Multispeciality Hospital</h2>
             <p className="about-desc">
               Bharat Multispeciality Hospital (BMH), Sardar Shahar was established as the first 8-bedded ICU
@@ -174,6 +175,7 @@ const Landing = () => {
               patient-centric care.
             </p>
             <ul className="about-highlights">
+              <li><FaCheckCircle/>Established  on 2nd October 2019 and serving with pride.</li>
               <li><FaCheckCircle /> The first & only 50-bedded hospital in Sardarshahar.</li>
               <li><FaCheckCircle /> Empanelled in Chiranjeevi Yojna (MAA Yojna) & RGHS Yojna by the Government of Rajasthan.</li>
               <li><FaCheckCircle /> Empanelled in general surgery by the Government of Rajasthan in Sardarshahar.</li>
